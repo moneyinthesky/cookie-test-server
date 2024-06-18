@@ -15,7 +15,7 @@ app.get("/redirect", (req, res) => {
 	res.cookie("test", "value", {
 		sameSite: 'none',
 		secure: true,
-		domain: '.onrender.com'
+		domain: 'onrender.com'
 	})
        .redirect(307, `https://cookie-test-server-b.onrender.com/`)
 })
