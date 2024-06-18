@@ -8,7 +8,7 @@ const port = 3000
 
 app.get("/", (req, res) => {
 	res.cookie("test", "value")
-       .redirect(307, `http://localhost:3001`)
+       .redirect(307, `https://cookie-test-server-b.onrender.com/`)
 })
 
 app.listen(port, () => {
