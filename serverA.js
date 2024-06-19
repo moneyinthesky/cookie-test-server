@@ -12,11 +12,15 @@ app.get("/", (req, res) => {
 })
 
 app.get("/redirect", (req, res) => {
-	res.cookie("test", "value", {
-		// sameSite: 'none',
-		secure: true,
-		domain: 'moneyinthesky.uk'
-	})
+	res
+		.cookie("cross-subdomain-test", "value", {
+			// sameSite: 'none',
+			secure: true,
+			domain: 'moneyinthesky.uk'
+		})
+		.cookie("default-test", "value", {
+			secure: true,
+		})
        .redirect(307, `https://server-b.moneyinthesky.uk`)
 })
 
