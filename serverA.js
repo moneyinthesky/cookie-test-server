@@ -1,27 +1,25 @@
 const express = require("express")
-const cookieParser = require('cookie-parser');
+const cookieParser = require("cookie-parser")
 
 const app = express()
-app.use(cookieParser());
+app.use(cookieParser())
 
 const port = 3000
 
 app.get("/", (req, res) => {
-	const previousCookie = req.cookies.test
-	res.send(`Server A: ${previousCookie}`)
+	res.send(`Server A Subdomain Cookie: ${req.cookies["cross-subdomain-test"]} / Default Cookie: ${req.cookies["default-test"]}`)
 })
 
 app.get("/redirect", (req, res) => {
-	res
-		.cookie("cross-subdomain-test", "value", {
-			// sameSite: 'none',
-			secure: true,
-			domain: 'moneyinthesky.uk'
-		})
+	res.cookie("cross-subdomain-test", "value", {
+		// sameSite: 'none',
+		secure: true,
+		domain: "moneyinthesky.uk",
+	})
 		.cookie("default-test", "value", {
 			secure: true,
 		})
-       .redirect(307, `https://server-b.moneyinthesky.uk`)
+		.redirect(307, `https://server-b.moneyinthesky.uk`)
 })
 
 app.listen(port, () => {

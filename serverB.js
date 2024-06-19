@@ -7,9 +7,7 @@ app.use(cookieParser());
 const port = 3001
 
 app.get("/", (req, res) => {
-    const previousCookie = req.cookies.test
-
-	res.send(`Server B: ${previousCookie}`)
+	res.send(`Server B Subdomain Cookie: ${req.cookies["cross-subdomain-test"]} / Default Cookie: ${req.cookies["default-test"]}`)
 })
 
 app.listen(port, () => {
