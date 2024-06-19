@@ -13,11 +13,11 @@ app.get("/", (req, res) => {
 
 app.get("/redirect", (req, res) => {
 	res.cookie("test", "value", {
-		sameSite: 'none',
+		// sameSite: 'none',
 		secure: true,
-		domain: 'onrender.com'
+		domain: 'moneyinthesky.uk'
 	})
-       .redirect(307, `https://cookie-test-server-b.onrender.com/`)
+       .redirect(307, `https://server-b.moneyinthesky.uk`)
 })
 
 app.listen(port, () => {
